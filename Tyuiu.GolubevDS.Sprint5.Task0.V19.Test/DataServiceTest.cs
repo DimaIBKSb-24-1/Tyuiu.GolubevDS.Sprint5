@@ -9,8 +9,8 @@ public class DataServiceTest
     [TestMethod]
     public void ValidSaveToFileTextData()
     {
-        string part = @"C:\Users\maska\source\repos\Tyuiu.GolubevDS.Sprint5\Tyuiu.GolubevDS.Sprint5.Task0.V19\bin\Debug\OutPutFileTask0.txt";
-        FileInfo fileInfo = new FileInfo(part);
+        string path = @"C:\Users\maska\source\repos\Tyuiu.GolubevDS.Sprint5\Tyuiu.GolubevDS.Sprint5.Task0.V19\bin\Debug\OutPutFileTask0.txt";
+        FileInfo fileInfo = new FileInfo(path);
         bool fileExists = fileInfo.Exists;
         bool wait = true;
         Assert.AreEqual(wait, fileExists);
