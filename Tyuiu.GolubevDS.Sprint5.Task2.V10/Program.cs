@@ -1,4 +1,5 @@
 ﻿using Tyuiu.GolubevDS.Sprint5.Task2.V10.Lib;
+DataService ds = new DataService();
 
 Console.WriteLine("***************************************************************************");
 Console.WriteLine("* Спринт #5                                                               *");
@@ -15,35 +16,30 @@ Console.WriteLine("*************************************************************
 Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
 Console.WriteLine("***************************************************************************");
 
-int[,] matrix = new int[3, 3];
+int[,] matrix = new int[3, 3] { { 4, 3, -3 },
+                                           { -5, -6, -3 },
+                                           { -7, -9, -9 } };
+int rows = matrix.GetUpperBound(0) + 1;
+int columns = matrix.Length / rows;
 
-
-Console.WriteLine("Введите элементы массива 3x3 (разделяйте значения с помощью пробела):");
-for (int i = 0; i < 3; i++)
+Console.WriteLine("Массив: ");
+for (int i = 0; i < rows; i++)
 {
-    string[] input = Console.ReadLine().Split(new char[] { ' ', ';' }, StringSplitOptions.RemoveEmptyEntries);
-    for (int j = 0; j < 3; j++)
+    for (int j = 0; j < columns; j++)
     {
-        matrix[i, j] = int.Parse(input[j]);
-    }
-}
-
-
-DataService dataService = new DataService();
-string filePath = dataService.SaveToFileTextData(matrix);
-
-
-Console.WriteLine("Результат преобразования:");
-for (int i = 0; i < matrix.GetLength(0); i++)
-{
-    for (int j = 0; j < matrix.GetLength(1); j++)
-    {
-        int value = matrix[i, j] > 0 ? 1 : 0;
-        Console.Write(value);
-        if (j < matrix.GetLength(1) - 1)
-            Console.Write(";"); 
+        Console.Write($"{matrix[i, j]} \t");
     }
     Console.WriteLine();
 }
 
-Console.WriteLine($"Данные сохранены в файл: {filePath}");
+Console.WriteLine();
+Console.WriteLine("***************************************************************************");
+Console.WriteLine("* РЕЗУЛЬТАТ:                                                              *");
+Console.WriteLine("***************************************************************************");
+
+string res = ds.SaveToFileTextData(matrix);
+
+Console.WriteLine("Файл: " + res);
+Console.WriteLine("Создан!");
+
+Console.ReadKey();
