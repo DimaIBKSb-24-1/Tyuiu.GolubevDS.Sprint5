@@ -6,13 +6,8 @@ public class DataService : ISprint5Task2V10
 {
     public string SaveToFileTextData(int[,] matrix)
     {
-        string path = $@"{Directory.GetCurrentDirectory()}\OutPutFileTask2.csv";
-        FileInfo fileInfo = new FileInfo(path);
-        bool fileExists = fileInfo.Exists;
-        if (fileExists)
-        {
-            File.Delete(path);
-        }
+        string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask2.csv");
+
         int rows = matrix.GetUpperBound(0) + 1;
         int columns = matrix.Length / rows;
 
