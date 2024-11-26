@@ -16,10 +16,11 @@ Console.WriteLine("*************************************************************
 Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
 Console.WriteLine("***************************************************************************");
 
-string outputFilePath = dataService.SaveToFileTextData(2);
+string result = dataService.SaveToFileTextData(2);
 
+// Выводим результат на консоль  
+Console.WriteLine($"Результат: {result}");
 
-Console.WriteLine($"Результат сохранён в файл: {outputFilePath}");
-
-
+// Информация о завершении вычислений  
+Console.WriteLine("Вычисление завершено.");
 Console.ReadLine();
