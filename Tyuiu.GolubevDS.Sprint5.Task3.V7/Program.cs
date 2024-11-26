@@ -1,6 +1,6 @@
 ﻿using System.Text;
 using Tyuiu.GolubevDS.Sprint5.Task3.V7.Lib;
-DataService dataService = new DataService();
+DataService ds = new DataService();
 
 Console.WriteLine("***************************************************************************");
 Console.WriteLine("* Спринт #5                                                               *");
@@ -17,14 +17,20 @@ Console.WriteLine("*************************************************************
 Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
 Console.WriteLine("***************************************************************************");
 
-string result = dataService.SaveToFileTextData(2);
-string input = "18.400";
-byte[] bytes = Encoding.UTF8.GetBytes(input);
-string base64Result = Convert.ToBase64String(bytes);
+int x = 2;
+Console.WriteLine("x = " + x);
 
-// Выводим результат на консоль  
-Console.WriteLine($"Результат в формате Base64: {result}");
 
-// Информация о завершении вычислений  
-Console.WriteLine("Вычисление завершено.");
-Console.ReadLine();
+Console.WriteLine("****************************************************************************");
+Console.WriteLine("* РЕЗУЛЬТАТ:                                                               *");
+Console.WriteLine("****************************************************************************");
+
+string res = ds.SaveToFileTextData(x);
+
+Console.WriteLine("Файл: " + res);
+Console.WriteLine("Создан!");
+
+Console.WriteLine("Результат: ");
+Console.WriteLine(1.6 * (Math.Pow(x, 3)) - 2.1 * (Math.Pow(x, 2)) + 7 * x);
+
+Console.ReadKey();
