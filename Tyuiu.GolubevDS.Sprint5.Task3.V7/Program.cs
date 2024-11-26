@@ -1,4 +1,5 @@
-﻿using Tyuiu.GolubevDS.Sprint5.Task3.V7.Lib;
+﻿using System.Text;
+using Tyuiu.GolubevDS.Sprint5.Task3.V7.Lib;
 DataService dataService = new DataService();
 
 Console.WriteLine("***************************************************************************");
@@ -17,6 +18,9 @@ Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                             
 Console.WriteLine("***************************************************************************");
 
 string result = dataService.SaveToFileTextData(2);
+string input = "18.400";
+byte[] bytes = Encoding.UTF8.GetBytes(input);
+string base64Result = Convert.ToBase64String(bytes);
 
 // Выводим результат на консоль  
 Console.WriteLine($"Результат в формате Base64: {result}");

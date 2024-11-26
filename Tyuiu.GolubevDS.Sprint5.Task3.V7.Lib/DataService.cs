@@ -26,6 +26,7 @@ public class DataService : ISprint5Task3V7
         // Конвертация байтового массива в строку Base64  
         string base64Result = Convert.ToBase64String(outputBytes);
 
+
         // Возвращаем строку Base64  
         return base64Result;
 
