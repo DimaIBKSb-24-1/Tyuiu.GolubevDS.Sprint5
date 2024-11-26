@@ -19,7 +19,7 @@ Console.WriteLine("*************************************************************
 string result = dataService.SaveToFileTextData(2);
 
 // Выводим результат на консоль  
-Console.WriteLine($"Результат: {result}");
+Console.WriteLine($"Результат в формате Base64: {result}");
 
 // Информация о завершении вычислений  
 Console.WriteLine("Вычисление завершено.");
