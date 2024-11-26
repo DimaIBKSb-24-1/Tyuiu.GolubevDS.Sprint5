@@ -8,9 +8,9 @@ public class DataService : ISprint5Task3V7
 {
     public string SaveToFileTextData(int x)
     {
-        string path = $@"{Directory.GetCurrentDirectory()}\OutPutFileTask3.bin";
+        string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask3.bin");
 
-            double y = (1.6 * (Math.Pow(x, 3)) - 2.1 * (Math.Pow(x, 2)) + 7 * x);
+        double y = (1.6 * (Math.Pow(x, 3)) - 2.1 * (Math.Pow(x, 2)) + 7 * x);
 
 
             y = Math.Round(y, 3);
