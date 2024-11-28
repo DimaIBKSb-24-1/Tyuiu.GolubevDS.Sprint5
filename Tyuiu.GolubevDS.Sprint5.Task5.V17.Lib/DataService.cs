@@ -9,29 +9,34 @@ public class DataService : ISprint5Task5V17
     {
         double sum = 0;
 
-        using (StreamReader reader = new StreamReader(path))
+        try
         {
-            string line;
-            while ((line = reader.ReadLine()) != null)
+            using (StreamReader reader = new StreamReader(path))
             {
-                if (int.TryParse(line.Trim(), out int number) && IsPrime(number))
+                string line;
+                while ((line = reader.ReadLine()) != null)
                 {
-                    sum += number;
+                    if (int.TryParse(line.Trim(), out int number) && IsPrime(number))
+                    {
+                        sum += number;
+                    }
                 }
             }
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при чтении файла: {ex.Message}");
+        }
 
-         
-        return Math.Round(sum, 3);
+        return Math.Round(sum, 3); // Округление до трех знаков после запятой  
     }
 
-      
     private bool IsPrime(int number)
     {
-        if (number <= 1) return false;   
+        if (number <= 1) return false; // 0 и 1 не являются простыми  
         for (int i = 2; i <= Math.Sqrt(number); i++)
         {
-            if (number % i == 0) return false;  
+            if (number % i == 0) return false; // Если число делится на i, то оно не простое  
         }
         return true;
     }
