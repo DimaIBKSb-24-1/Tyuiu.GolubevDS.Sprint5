@@ -7,37 +7,25 @@ public class DataService : ISprint5Task5V17
 {
     public double LoadFromDataFile(string path)
     {
-        double sum = 0;
-
-        // Проверка существования файла  
-        if (!File.Exists(path))
-        {
-            Console.WriteLine("Файл не найден: " + path);
-            return sum; // Вернуть 0, если файл не существует  
-        }
-
+        double res = 0;
         using (StreamReader reader = new StreamReader(path))
         {
-            string line;
+            string? line;
             while ((line = reader.ReadLine()) != null)
             {
-                if (int.TryParse(line.Trim(), out int number) && IsPrime(number))
+                string lineReplace = line.Replace('.', ',');
+                string[] lineArray = lineReplace.Split(' ');
+
+                foreach (string number in lineArray)
                 {
-                    sum += number;
+                    double lineParse = double.Parse(number);
+                    if (lineParse > 0)
+                    {
+                        res = res + lineParse;
+                    }
                 }
             }
         }
-
-        return Math.Round(sum, 3); // Округление до трех знаков после запятой  
-    }
-
-    private bool IsPrime(int number)
-    {
-        if (number <= 1) return false; // 0 и 1 не являются простыми  
-        for (int i = 2; i <= Math.Sqrt(number); i++)
-        {
-            if (number % i == 0) return false; // Если число делится на i, то оно не простое  
-        }
-        return true;
+        return Math.Round(res, 3);
     }
 }
