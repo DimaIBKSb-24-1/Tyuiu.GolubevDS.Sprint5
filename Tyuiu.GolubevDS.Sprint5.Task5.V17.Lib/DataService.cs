@@ -9,23 +9,23 @@ public class DataService : ISprint5Task5V17
     {
         double sum = 0;
 
-        try
+        // Проверка существования файла  
+        if (!File.Exists(path))
         {
-            using (StreamReader reader = new StreamReader(path))
+            Console.WriteLine("Файл не найден: " + path);
+            return sum; // Вернуть 0, если файл не существует  
+        }
+
+        using (StreamReader reader = new StreamReader(path))
+        {
+            string line;
+            while ((line = reader.ReadLine()) != null)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                if (int.TryParse(line.Trim(), out int number) && IsPrime(number))
                 {
-                    if (int.TryParse(line.Trim(), out int number) && IsPrime(number))
-                    {
-                        sum += number;
-                    }
+                    sum += number;
                 }
             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Ошибка при чтении файла: {ex.Message}");
         }
 
         return Math.Round(sum, 3); // Округление до трех знаков после запятой  
