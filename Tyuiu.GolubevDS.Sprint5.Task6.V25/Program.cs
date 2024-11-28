@@ -1,0 +1,18 @@
+﻿using Tyuiu.GolubevDS.Sprint5.Task6.V25.Lib;
+DataService ds = new DataService();
+Console.WriteLine("***************************************************************************");
+Console.WriteLine("* УСЛОВИЕ:                                                                *");
+Console.WriteLine("* Дан файл С:\\DataSprint5\\InPutDataFileTask6V25.txt в котором есть      *");
+Console.WriteLine("* набор символьных данных. Найти количество знаков восклицания            *");
+Console.WriteLine("* в заданной строке.                                                      *");
+Console.WriteLine("*                                                                         *");
+Console.WriteLine("***************************************************************************");
+Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
+Console.WriteLine("***************************************************************************");
+string path = Path.Combine("C:", "DataSprint5", "InPutDataFileTask6V25.txt");
+Console.WriteLine("Данные находятся в файле: " + path);
+Console.WriteLine("***************************************************************************");
+Console.WriteLine("* РЕЗУЛЬТАТ:                                                              *");
+Console.WriteLine("***************************************************************************");
+double res = ds.LoadFromDataFile(path);
+Console.WriteLine("Количество знаков восклицания в заданной строке = " + res);
